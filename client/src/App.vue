@@ -16,4 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  font-family: "Lato", sans-serif;
+}
 </style>

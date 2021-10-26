@@ -1,9 +1,9 @@
 <template>
   <div class="user">
     <div class="container">
-      <div class="row mb-5">
+      <div class="row mb-3 mb-md-5">
         <div class="col-md-12">
-          <router-link to="/">
+          <router-link to="/" class="back">
             <i class="fas fa-long-arrow-alt-left"></i> Back to home
           </router-link>
         </div>
@@ -19,9 +19,9 @@
           </div>
           <div
             v-if="user.created_at"
-            class="mb-3"
+            class="mb-4"
           >Member Since: {{ new Date(user.created_at).toLocaleDateString() }}</div>
-          <a :href="user.html_url" target="_blank">
+          <a :href="user.html_url" target="_blank" class="user-button">
             View Profile
             <i class="fas fa-external-link-alt"></i>
           </a>
@@ -74,7 +74,7 @@
                     <td>{{ repo.watchers }}</td>
                     <td>{{ repo.size }}</td>
                     <td>
-                      <a :href="repo.html_url" target="_blank">
+                      <a :href="repo.html_url" target="_blank" class="text-center">
                         <i class="fas fa-external-link-alt"></i>
                       </a>
                     </td>
@@ -125,6 +125,9 @@ export default {
   img {
     width: 100%;
   }
+  @media (max-width: 767px) {
+    padding-top: calc(85px + 20px);
+  }
 }
 
 .budge {
@@ -139,5 +142,36 @@ export default {
 
 .table > :not(:first-child) {
   border-top: 0 !important;
+}
+
+.table i {
+  color: #42b983;
+
+  &:hover {
+    color: #212529;
+    transition: all 0.25s;
+  }
+}
+
+.user-button {
+  text-decoration: none;
+  border: 0;
+  background-color: #42b983;
+  padding: 12px 25px;
+  color: #fff;
+  transition: all 0.25s;
+
+  &:hover {
+    color: #212529;
+  }
+}
+
+.back {
+  color: #212529;
+  text-decoration: none;
+  transition: all 0.25s;
+  &:hover {
+    color: #42b983;
+  }
 }
 </style>
