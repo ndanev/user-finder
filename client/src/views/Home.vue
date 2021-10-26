@@ -10,12 +10,18 @@
                 v-model="searchUser"
                 placeholder="Search by username"
                 class="form-control"
+                required
               />
             </div>
             <button type="submit">
               <i class="fas fa-search"></i> Search
             </button>
           </form>
+        </div>
+      </div>
+      <div v-if="loading" class="row mb-5">
+        <div class="col-md-12 text-center">
+          <img src="@/assets/spinner.gif" alt="Spinner" class="spinner" />
         </div>
       </div>
       <div v-if="data" class="row">
@@ -26,6 +32,11 @@
         </div>
       </div>
       <div v-if="searchData" class="row">
+        <div class="col-md-12">
+          <div class="text-center mb-3">
+            <button @click="getUsers()" class="reset">Show all users</button>
+          </div>
+        </div>
         <div class="col-md-3">
           <router-link :to="`/user/${searchData.login}`" class="user-card-link">
             <UserCard :image="searchData.avatar_url" :name="searchData.login" />
@@ -47,10 +58,9 @@ export default {
   data() {
     return {
       data: null,
-      searchUser: '',
+      searchUser: null,
       searchData: null,
-      loading: false,
-      message: ''
+      loading: false
     }
   },
   methods: {
@@ -62,22 +72,25 @@ export default {
         this.searchData = res.data
         this.data = null
         this.loading = false
+        this.searchUser = null
       } catch (error) {
         console.log(error)
       }
-      console.log(this.searchData)
+    },
+    async getUsers() {
+      try {
+        this.loading = true
+        const res = await axios.get('https://api.github.com/users')
+        this.data = res.data
+        this.searchData = null
+        this.loading = false
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
-  async created() {
-    const url = 'https://api.github.com/users'
-    try {
-      this.loading = true
-      const res = await axios.get(url)
-      this.data = res.data
-      this.loading = false
-    } catch (error) {
-      console.log(error)
-    }
+  created() {
+    this.getUsers()
   }
 }
 </script>
@@ -115,5 +128,12 @@ export default {
 
 .user-card-link {
   text-decoration: none;
+}
+
+.reset {
+  background-color: #42b983;
+  border: 0;
+  color: #fff;
+  padding: 5px 10px;
 }
 </style>

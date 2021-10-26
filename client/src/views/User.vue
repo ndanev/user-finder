@@ -8,7 +8,11 @@
           </router-link>
         </div>
       </div>
-      <div v-if="loading">Loading...</div>
+      <div v-if="loading" class="row">
+        <div class="col-md-12 text-center">
+          <img src="@/assets/spinner.gif" alt="Spinner" class="spinner" />
+        </div>
+      </div>
       <div v-if="user" class="row user-info mb-5">
         <div class="col-md-3 mb-5 mb-md-0 user-info-left">
           <img :src="user.avatar_url" class="img-fluid mb-3" alt />
@@ -109,8 +113,6 @@ export default {
       this.user = res.data
       this.repos = repos.data
       this.loading = false
-      console.log('USER INFO', this.user)
-      console.log('REPOS', this.repos)
     } catch (error) {
       console.log(error)
     }

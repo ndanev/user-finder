@@ -19,4 +19,13 @@ export default {
 * {
   font-family: "Lato", sans-serif;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.spinner {
+  width: 200px !important;
+}
 </style>
