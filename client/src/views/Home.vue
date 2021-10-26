@@ -40,7 +40,7 @@
             <button @click="getUsers()" class="reset">Show all users</button>
           </div>
         </div>
-        <div class="col-6 col-sm-6 col-md-">
+        <div class="col-6 col-sm-6 col-md-3">
           <router-link :to="`/user/${searchData.login}`" class="user-card-link">
             <UserCard :image="searchData.avatar_url" :name="searchData.login" />
           </router-link>
