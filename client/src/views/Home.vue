@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <div class="container">
-      <div class="row mb-5">
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6 text-center mb-3 mb-md-5">
+          <h2>Explore github users and their repository informations using our service</h2>
+        </div>
         <div class="col-md-12">
           <form @submit.prevent="findUser">
             <div class="form-group">
@@ -25,7 +28,7 @@
         </div>
       </div>
       <div v-if="data" class="row">
-        <div v-for="user in data" :key="user.id" class="col-12 col-sm-6 col-md-3">
+        <div v-for="user in data" :key="user.id" class="col-6 col-sm-6 col-md-3">
           <router-link :to="`/user/${user.login}`" class="user-card-link">
             <UserCard :image="user.avatar_url" :name="user.login" />
           </router-link>
@@ -37,7 +40,7 @@
             <button @click="getUsers()" class="reset">Show all users</button>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-6 col-sm-6 col-md-">
           <router-link :to="`/user/${searchData.login}`" class="user-card-link">
             <UserCard :image="searchData.avatar_url" :name="searchData.login" />
           </router-link>
@@ -98,6 +101,10 @@ export default {
 <style lang="scss">
 .home {
   padding-top: calc(85px + 60px);
+
+  @media (max-width: 767px) {
+    padding-top: calc(85px + 20px);
+  }
 }
 
 .home {

@@ -1,9 +1,14 @@
 <template>
   <header class="header">
     <div class="container">
-      <router-link to="/" class="logo">
-        <img src="@/assets/github-logo.jpg" alt="Github logo" width="150" />
-      </router-link>
+      <div class="d-flex align-items-center justify-content-between">
+        <router-link to="/" class="logo">
+          <img src="@/assets/github-logo.jpg" alt="Github logo" width="150" />
+        </router-link>
+        <div>
+          <a href="https://api.github.com/users" target="_blank" class="navbar-link">API Link</a>
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -27,5 +32,17 @@ export default {
 
 .logo {
   text-decoration: none;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #212529;
+  transition: all 0.25s;
+  padding: 8px 20px;
+  margin-left: 0.5rem;
+
+  &:hover {
+    color: #42b983;
+  }
 }
 </style>

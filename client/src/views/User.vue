@@ -61,7 +61,7 @@
                 <thead>
                   <tr>
                     <th scope="col">id</th>
-                    <th scope="col">Created</th>
+                    <th scope="col">Created At</th>
                     <th scope="col">Name</th>
                     <th scope="col">Froks</th>
                     <th scope="col">Watchers</th>
@@ -123,6 +123,7 @@ export default {
 <style lang="scss">
 .user {
   padding-top: calc(85px + 60px);
+  padding-bottom: 3rem;
 
   img {
     width: 100%;
