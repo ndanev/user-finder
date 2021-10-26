@@ -29,7 +29,7 @@ export default {
 
 <style lang="scss">
 .footer {
-  padding: 16px 0;
+  padding: 1rem 0;
   border-top: 1px solid #d9d9d9;
 }
 
