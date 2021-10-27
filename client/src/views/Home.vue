@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row justify-content-center mb-5">
         <div class="col-md-6 text-center mb-3 mb-md-5">
-          <h2>Explore github users and their repository informations using our service</h2>
+          <h2>Explore github users and their repositories information using our service</h2>
         </div>
         <div class="col-md-12">
           <form @submit.prevent="findUser">
@@ -25,6 +25,11 @@
       <div v-if="loading" class="row mb-5">
         <div class="col-md-12 text-center">
           <img src="@/assets/spinner.gif" alt="Spinner" class="spinner" />
+        </div>
+      </div>
+      <div v-if="message" class="row mb-5">
+        <div class="col-md-12 text-center">
+          <div class="error-message">{{message}}</div>
         </div>
       </div>
       <div v-if="data" class="row">
@@ -63,7 +68,8 @@ export default {
       data: null,
       searchUser: null,
       searchData: null,
-      loading: false
+      loading: false,
+      message: null
     }
   },
   methods: {
@@ -76,7 +82,10 @@ export default {
         this.data = null
         this.loading = false
         this.searchUser = null
+        this.message = null
       } catch (error) {
+        this.message = 'Not user found!'
+        this.loading = false
         console.log(error)
       }
     },
@@ -87,7 +96,10 @@ export default {
         this.data = res.data
         this.searchData = null
         this.loading = false
+        this.message = null
       } catch (error) {
+        this.message = 'Not user found!'
+        this.loading = false
         console.log(error)
       }
     }
@@ -142,5 +154,9 @@ export default {
   border: 0;
   color: #fff;
   padding: 5px 10px;
+}
+
+.error-message {
+  color: #e55353;
 }
 </style>
