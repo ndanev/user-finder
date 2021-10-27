@@ -75,6 +75,7 @@ export default {
   methods: {
     async findUser() {
       const inputData = this.searchUser
+      this.searchUser = null
       try {
         this.loading = true
         const res = await axios.get('https://api.github.com/users/' + inputData)
