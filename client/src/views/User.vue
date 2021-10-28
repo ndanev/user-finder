@@ -63,7 +63,7 @@
                     <th scope="col">id</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Froks</th>
+                    <th scope="col">Forks</th>
                     <th scope="col">Watchers</th>
                     <th scope="col">Size</th>
                     <th scope="col">Repo Link</th>
