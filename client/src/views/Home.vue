@@ -96,12 +96,12 @@ export default {
         const res = await axios.get('https://api.github.com/users')
         this.data = res.data
         this.searchData = null
-        this.loading = false
         this.message = null
+        this.loading = false
       } catch (error) {
         this.message = 'Not user found!'
-        this.loading = false
         console.log(error)
+        this.loading = false
       }
     }
   },
